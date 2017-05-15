@@ -1,16 +1,17 @@
-class AppointmentsController < ApplicationController
+class AppointmentsController < ApiController
   before_action :set_appointment, only: [:show, :update, :destroy]
 
   # GET /appointments
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.select("id, subject, start_time, address").all
 
-    render json: @appointments
+    render json: @appointments.to_json
   end
 
   # GET /appointments/1
   def show
-    render json: @appointment
+    @appointment = Appointment.find(params[:id])
+    render json: @appointment.to_json(:include => { :services => { :only => [:id, :title, :description] }})
   end
 
   # POST /appointments

@@ -1,21 +1,73 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+  constructor () {
+    super()
+    this.state = {}
+    this.getAppointments = this.getAppointments.bind(this)
+    this.getAppointment = this.getAppointment.bind(this)
+  }
+  componentDidMount () {
+    this.getAppointments()
+  }
+  fetch (endpoint) {
+    return new Promise((resolve, reject) => {
+      window.fetch(endpoint)
+      .then(response => response.json())
+      .then(json => resolve(json))
+      .catch(error => reject(error))
+    })
+  }
+  getAppointments () {
+    this.fetch('api/appointments')
+      .then(appointments => {
+        this.setState({appointments: appointments})
+        this.getAppointment(appointments[0].id)
+      })
+  }
+  getAppointment (id) {
+    this.fetch(`api/appointments/${id}`)
+      .then(appointment => this.setState({appointment: appointment}))
+  }
+  render () {
+    let {appointments, appointment} = this.state
+    return appointments
+    ? <Container text>
+        <Header as='h2' icon textAlign='center'>
+        <Icon name='calendar' circular />
+        <Header.Content>
+          List of Appointments
+        </Header.Content>
+      </Header>
+      <Button.Group fluid widths="3">
+        {Object.keys(appointments).map((key) => {
+          return <Button active={appointment && appointment.id === appointments[key].id} fluid key={key} onClick={() => this.getAppointment(appointments[key].id)}>
+            {appointments[key].subject}
+          </Button>
+        })}
+      </Button.Group>
+      <Divider hidden />
+      {appointment &&
+        <Container>
+          <Header as='h2'>{appointment.subject}</Header>
+          {appointment.date && <p>{appointment.date}</p>}
+          {appointment.start_time && <p>{appointment.start_time}</p>}
+          {appointment.description && <p>{appointment.description}</p>}
+          {appointment.services &&
+            <Segment.Group>
+              {appointment.services.map((service, i) => <Segment key={i}>{service.description}</Segment>)}
+            </Segment.Group>
+          }
+        </Container>
+      }
+    </Container>
+    : <Container text>
+      <Dimmer active inverted>
+        <Loader content='Loading' />
+      </Dimmer>
+    </Container>
   }
 }
 
-export default App;
+export default App
