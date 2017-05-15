@@ -40,23 +40,21 @@ class App extends Component {
           List of Appointments
         </Header.Content>
       </Header>
-      <Button.Group fluid widths="3">
         {Object.keys(appointments).map((key) => {
           return <Button active={appointment && appointment.id === appointments[key].id} fluid key={key} onClick={() => this.getAppointment(appointments[key].id)}>
             {appointments[key].subject}
           </Button>
         })}
-      </Button.Group>
       <Divider hidden />
       {appointment &&
         <Container>
           <Header as='h2'>{appointment.subject}</Header>
-          {appointment.date && <p>{appointment.date}</p>}
+          {appointment.date && <p>{appointment.date}</p>} 
           {appointment.start_time && <p>{appointment.start_time}</p>}
           {appointment.description && <p>{appointment.description}</p>}
           {appointment.services &&
             <Segment.Group>
-              {appointment.services.map((service, i) => <Segment key={i}>{service.description}</Segment>)}
+              {appointment.services.map((service, i) => <Segment key={i}><h4>{service.title}</h4> {service.description}</Segment>)}
             </Segment.Group>
           }
         </Container>
