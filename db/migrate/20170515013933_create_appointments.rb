@@ -6,6 +6,8 @@ class CreateAppointments < ActiveRecord::Migration[5.0]
       t.date :date
       t.time :start_time
       t.string :address
+      t.belongs_to :admin_user, index: true
+      t.belongs_to :client, index: true
 
       t.timestamps
     end

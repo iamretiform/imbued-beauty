@@ -6,7 +6,5 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :services
     resources :appointments
-    resources :galleries
-    resources :photos
-  end
+      end
 end
