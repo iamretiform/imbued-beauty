@@ -25,11 +25,15 @@
     <%= form.label :photos %><br>
     <%= form.file_field :photos, id: :portfolio_photos, multiple: true %>
     <%= form.hidden_field :photos_cache %>
-    <% if form.object.photos? %>
-      <%= image_tag form.object.photos.thumb.url %>
-      <%= form.label :remove_photos %>
-      <%= form.check_box :remove_photos %>
-    <% end %> 
+    <% if portfolio.photos? %>
+      <% portfolio.photos.each do |photo| %>
+        <li>
+          <%= image_tag photo.thumb.url %>
+        </li>
+        <%= form.label :remove_photos %>
+        <%= form.check_box :remove_photos %>
+      <% end %> 
+    <% end %>
   </div> 
 
   <div class="actions">

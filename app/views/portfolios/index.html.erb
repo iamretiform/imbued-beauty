@@ -18,7 +18,7 @@
         <td><%= portfolio.title %></td>
         <td><%= portfolio.about %></td>
         <td><% portfolio.photos.each do |photo| %>
-            <li><img src=<%= photo.url %>/> </li>
+            <li><img src=<%= photo.thumb.url %>/> </li>
             <% end %>
         </td>
         <td><%= link_to 'Show', portfolio %></td>
@@ -33,3 +33,4 @@
 
 <%= link_to 'New Portfolio', new_portfolio_path %>
 <%= link_to 'Blogs', blogs_path %>
+<%= link_to 'Home', root_path %>
