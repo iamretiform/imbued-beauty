@@ -1,0 +1,22 @@
+<p id="notice">
+  <%= notice %>
+</p>
+<p>
+  <strong>Title:</strong>
+  <%= @portfolio.title %>
+</p>
+<p>
+  <strong>About:</strong>
+  <%= @portfolio.about %>
+</p>
+<p>
+  <strong>Photos:</strong>
+    <% @portfolio.photos.each do |photo| %>
+      <li>
+        <img src=<%= photo.url %>/>
+      </li>
+      <% end %>
+</p>
+<%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
+  <%= link_to 'Back', portfolios_path %>
+  <%= link_to 'Blogs', blogs_path %>

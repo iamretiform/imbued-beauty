@@ -1,0 +1,38 @@
+<%= form_with(model: portfolio, local: true) do |form| %>
+  <% if portfolio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
+
+      <ul>
+      <% portfolio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :portfolio_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :about %>
+    <%= form.text_field :about, id: :portfolio_about %>
+  </div>
+
+  <div class="field">
+    <%= form.label :photos %><br>
+    <%= form.file_field :photos, id: :portfolio_photos, multiple: true %>
+    <%= form.hidden_field :photos_cache %>
+    <% if form.object.photos? %>
+      <%= image_tag form.object.photos.thumb.url %>
+      <%= form.label :remove_photos %>
+      <%= form.check_box :remove_photos %>
+    <% end %> 
+  </div> 
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

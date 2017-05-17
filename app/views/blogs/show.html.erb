@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @blog.title %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @blog.about %>
+</p>
+
+<p>
+  <strong>Posts:</strong>
+  <% @blog.posts.each do |post|  %>
+  <h3><%= post.date %></h3>
+  <h2><%= post.title %></h2>
+  <h6><%= post.content %></h6>
+  <% end %>
+</p>
+<%= link_to 'New Post', new_blog_post_path(@blog) %>
+<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<%= link_to 'Back', blogs_path %>
+
+
