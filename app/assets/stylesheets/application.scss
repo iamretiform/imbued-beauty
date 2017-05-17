@@ -13,8 +13,10 @@
  *= require_tree .
  *= require_self
  */
- @import "materialize/components/color";
- $primary-color: color("blue", "lighten-2") !default;
- $secondary-color: color("yellow", "base") !default;
+
  @import 'materialize';
+ $primary-color: color("black", "lighten-2") !default;
+ $secondary-color: color("gray", "base") !default;
+ $card-padding: 0px !default;
+ $card-bg-color: #250631 !default;
  @import "materialize/extras/nouislider";
