@@ -1,15 +1,4 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
  */
@@ -17,6 +6,77 @@
  @import 'materialize';
  $primary-color: color("black", "lighten-2") !default;
  $secondary-color: color("gray", "base") !default;
- $card-padding: 0px !default;
- $card-bg-color: #250631 !default;
  @import "materialize/extras/nouislider";
+ @import url('https://fonts.googleapis.com/css?family=Barrio');
+
+
+* {
+  background-color: black;
+}
+
+body {
+  max-height: 99vh;
+}
+
+#landing_page {
+  /*border: 2px dotted green;*/
+  margin: 0;
+  padding: 0;
+  max-height: 810px;
+}
+
+#quadrant, #quadrant_four, #quadrant_four_small {
+  /*border: 3px dotted yellow;*/
+  padding: 0;
+  /*margin: 0;*/
+  min-height: 45vh;
+  max-height: 50vh; 
+  min-width: 45vh;
+  max-width: 98vh;
+}
+
+.section {
+  /*border: 5px solid white;*/
+  padding: 5px;
+  margin-bottom: 0;
+  min-height: 49vh;
+  /*max-height: 49vh; */
+  font-family: 'Barrio', cursive;
+  text-shadow: 1px 1px 10px white;
+}
+
+
+#quadrant > div {
+  position: relative;
+}
+
+#quadrant > div > div {
+  position: absolute;
+  bottom: 20vh;
+  left: 15vw; 
+}
+
+#quadrant_four > div {
+  position: relative;
+}
+
+#quadrant_four > div > div {
+  position: absolute;
+  margin-top: 3%;
+  bottom: 0vh;
+  left: 0vw; 
+}
+
+#quadrant_four_small > div {
+  position: relative;
+}
+
+#quadrant_four_small > div > div {
+  position: absolute;
+  margin-top: 3%;
+  bottom: 0vh;
+  left: 0vw; 
+}
+
+
+
