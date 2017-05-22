@@ -19,6 +19,11 @@
 //= require_tree .
 
 $( document ).ready(function(){
+  $(".button-collapse").sideNav({
+    menuWidth: 150,
+    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    draggable: true
+  });
   $.fn.extend({
     animateCss: function (animationName) {
         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
@@ -27,5 +32,7 @@ $( document ).ready(function(){
         });
     }
 });
-$('.carousel.carousel-slider').carousel({fullWidth: true});
+  $("#a").click(function(){
+      $(this).animate({height: "300px"});
+  });
 });

@@ -7,44 +7,67 @@
  $primary-color: color("black", "lighten-2") !default;
  $secondary-color: color("gray", "base") !default;
  @import "materialize/extras/nouislider";
- @import url('https://fonts.googleapis.com/css?family=Barrio');
+ @import url('https://fonts.googleapis.com/css?family=Just+Another+Hand|Sue+Ellen+Francisco');
 
 
 * {
+  color: red;
   background-color: black;
+  font-family: 'Sue Ellen Francisco', cursive;
+  /*font-family: 'Just Another Hand', cursive;*/
 }
 
 body {
-  max-height: 99vh;
+  max-height: 90vh;
 }
 
-#landing_page {
-  /*border: 2px dotted green;*/
-  margin: 0;
-  padding: 0;
-  max-height: 810px;
+
+a {
+  color: white;
+  margin: 0px;
 }
 
-#quadrant, #quadrant_four, #quadrant_four_small {
-  /*border: 3px dotted yellow;*/
-  padding: 0;
-  /*margin: 0;*/
-  min-height: 45vh;
-  max-height: 50vh; 
-  min-width: 45vh;
-  max-width: 98vh;
+nav {
+  background-color: black;
+  z-index: 8;
+}
+
+li {
+  color: red;
 }
 
 .section {
   /*border: 5px solid white;*/
   padding: 5px;
   margin-bottom: 0;
-  min-height: 49vh;
+  min-height: 38vh;
   /*max-height: 49vh; */
-  font-family: 'Barrio', cursive;
-  text-shadow: 1px 1px 10px white;
+  text-shadow: 3px 6px 9px white;
 }
 
+#quadrant {
+  /*border: 3px dotted yellow;*/
+  padding: 0;
+  /*margin: 0;*/
+  min-height: 37vh;
+  max-height: 37vh; 
+  min-width: 45vh;
+  max-width: 98vh;
+}
+
+#quadrant > div {
+  background-image: url("/uploads/portfolio/photos/1/1.jpg/");
+  background-position: center; 
+  background-size: contain;
+}
+
+#landing_page {
+  z-index: -1;
+  /*border: 2px dotted green;*/
+  margin: 0;
+  padding: 0;
+  max-height: 90vh;
+}
 
 #quadrant > div {
   position: relative;
@@ -56,26 +79,21 @@ body {
   left: 15vw; 
 }
 
-#quadrant_four > div {
-  position: relative;
+#mobile > li > a {
+  color: white;
 }
 
-#quadrant_four > div > div {
-  position: absolute;
-  margin-top: 3%;
-  bottom: 0vh;
-  left: 0vw; 
+#mobile {
+  background: black;
+  border: 1px solid white;
 }
 
-#quadrant_four_small > div {
-  position: relative;
+body > nav > div > a.brand-logo.center > p {
+  z-index: 10;
 }
 
-#quadrant_four_small > div > div {
-  position: absolute;
-  margin-top: 3%;
-  bottom: 0vh;
-  left: 0vw; 
+body > nav > a.button-collapse > i {
+  border: 0px solid black;
 }
 
 
