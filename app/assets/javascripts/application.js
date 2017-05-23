@@ -12,13 +12,22 @@
 //
 //= require jquery3
 //= require rails-ujs
-//= require turbolinks
 //= require materialize
 //= require materialize/extras/nouislider
 //= require materialize-sprockets
 //= require_tree .
 
 $( document ).ready(function(){
+  $('.modal').modal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: 0.5, // Opacity of modal background
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
+    }
+  );
+
   $(".button-collapse").sideNav({
     menuWidth: 150,
     closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
@@ -33,6 +42,6 @@ $( document ).ready(function(){
     }
 });
   $("#a").click(function(){
-      $(this).animate({height: "300px"});
+      $("#a").animate({height: "300px"});
   });
 });

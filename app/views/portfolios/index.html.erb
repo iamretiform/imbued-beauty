@@ -1,5 +1,8 @@
-<p id="notice"><%= notice %></p>
-
+<div class="container center">
+<p id="notice">
+  <%= notice %>
+</p>
+<!-- 
 <h1>Portfolios</h1>
 
 <table>
@@ -34,3 +37,20 @@
 <%= link_to 'New Portfolio', new_portfolio_path %>
 <%= link_to 'Blogs', blogs_path %>
 <%= link_to 'Home', root_path %>
+
+ -->
+<% @portfolios.each do |portfolio| %>
+
+    <% portfolio.photos.each do |photo| %>
+      <div class="row center">
+        <div class="card hoverable animated fadeInRight">
+          <div class="col s12 m6">
+            <div class="card-image">
+              <img width="400" src="<%= photo.url %>" />
+            </div>
+          </div>
+        </div>
+        <%  end %>
+      </div>
+  <% end %>
+  </div>
